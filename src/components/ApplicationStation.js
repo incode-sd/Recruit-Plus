@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 // STYLES
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './ApplicationStation.css'
+// COMPONENTS
+import NavBar from './navigation/NavBar'
+import ApplicationViews from './ApplicationViews'
 
 
 class ApplicationStation extends Component {
@@ -32,6 +35,17 @@ class ApplicationStation extends Component {
 
     render() {
         return (
+            <React.Fragment>
+                <NavBar
+                    isLoggedIn={this.state.isLoggedIn}
+                    clearUser={this.clearUser}
+                    />
+                <ApplicationViews
+                    isAuthenticated={this.isAuthenticated}
+                    loginUser={this.loginUser}
+                    isLoggedIn={this.state.isLoggedIn}
+                />
+            </React.Fragment>
         )
     }
 }
