@@ -40,7 +40,7 @@ class Login extends Component {
             <React.Fragment>
                 <div className="jumbotron text-center welcome-view">
                     <header className="welcome-header">
-                        <h2 className="font-weight-light text-center">Application Station</h2>
+                        <h2 className="font-weight-light text-center">Recruit Plus</h2>
                         <h6 className="font-weight-light text-center">Search Job Easily</h6>
                     </header>
                     <form

@@ -7,6 +7,9 @@ import { Route, Redirect } from 'react-router-dom'
 // AUTH
 import Login from './auth/Login'
 import Register from './auth/Register'
+// LOGGED IN VIEWS
+import ApplicationList from './applications/ApplicationList'
+import ApplicationDetail from './applications/ApplicationDetail'
 
 
 class ApplicationViews extends Component {
@@ -41,6 +44,26 @@ class ApplicationViews extends Component {
                         :
                         <Redirect to="/login" />
                 }} />
+                <Route exact path="/applications" render={props => {
+                    return this.props.isLoggedIn ?
+                        <ApplicationList
+                            getLoggedInUser={this.props.getLoggedInUser}
+                            {...props}
+                        />
+                        :
+                        <Redirect to="/login" />
+                }} />
+                <Route exact path="/applications/:applicationId(\d+)" render={props => {
+                    return this.props.isLoggedIn ?
+                        <ApplicationDetail
+                            applicationId={props.match.params.applicationId}
+                            getLoggedInUser={this.props.getLoggedInUser}
+                            {...props}
+                        />
+                        :
+                        <Redirect to="/login" />
+                }} />
+
             </React.Fragment>
         )
     }
