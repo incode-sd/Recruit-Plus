@@ -10,6 +10,9 @@ import Register from './auth/Register'
 // LOGGED IN VIEWS
 import ApplicationList from './applications/ApplicationList'
 import ApplicationDetail from './applications/ApplicationDetail'
+import EventList from './events/EventList'
+import QuestionList from './questions/QuestionList'
+import QuestionDetail from './questions/QuestionDetail'
 
 
 class ApplicationViews extends Component {
@@ -57,6 +60,34 @@ class ApplicationViews extends Component {
                     return this.props.isLoggedIn ?
                         <ApplicationDetail
                             applicationId={props.match.params.applicationId}
+                            getLoggedInUser={this.props.getLoggedInUser}
+                            {...props}
+                        />
+                        :
+                        <Redirect to="/login" />
+                }} />
+                <Route exact path="/events" render={props => {
+                    return this.props.isLoggedIn ?
+                        <EventList
+                            getLoggedInUser={this.props.getLoggedInUser}
+                            {...props}
+                        />
+                        :
+                        <Redirect to="/login" />
+                }} />
+                <Route exact path="/questions" render={props => {
+                    return this.props.isLoggedIn ?
+                        <QuestionList
+                            getLoggedInUser={this.props.getLoggedInUser}
+                            {...props}
+                        />
+                        :
+                        <Redirect to="/login" />
+                }} />
+                <Route exact path="/questions/:questionId(\d+)" render={props => {
+                    return this.props.isLoggedIn ?
+                        <QuestionDetail
+                            questionId={props.match.params.questionId}
                             getLoggedInUser={this.props.getLoggedInUser}
                             {...props}
                         />

@@ -16,13 +16,22 @@ class NavBar extends Component {
         return (
             <nav className="navbar flex-md-nowrap p-0 shadow">
                 <div className="brand">
-                    <img className="train-logo" src={require("../../images/application-station-logo.png")} alt="Train Logo" />
+                    <img className="train-logo" src={require("../../images/logo512.png")} alt="Train Logo" />
                     <h4>Recruit Plus</h4>
                 </div>
                 {this.props.isLoggedIn ?
                     <ul className="nav nav-pills nav-fill">
                         <li className="nav-item">
                             <Link className="nav-link" to="/">Applications</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/events">Events</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/questions">Questions</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" onClick={this.props.clearUser} to="/login">Logout</Link>
                         </li>
                     </ul>
                     :

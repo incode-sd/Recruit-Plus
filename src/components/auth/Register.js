@@ -6,6 +6,8 @@
 import React, { Component } from 'react'
 // DATA
 import authApiManager from './authApiManager'
+// MODULES
+import createDefaultQuestions from '../../modules/defaultQuestions'
 // STYLES
 import './auth.css'
 
@@ -44,6 +46,7 @@ class Register extends Component {
             authApiManager.register(newUser)
                 .then(() => {
                     if (this.props.isAuthenticated()) {
+                        createDefaultQuestions()
                         this.props.loginUser()
                         this.props.history.push("/")
                     } else {
